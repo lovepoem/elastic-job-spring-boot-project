@@ -12,7 +12,7 @@
     <artifactId>elastic-job-spring-boot-samples-jobs</artifactId>
     <dependencies>
         <dependency>
-            <artifactId>elastic-job-spring-boot-samples-embem-zk</artifactId>
+            <artifactId>elastic-job-spring-boot-samples-embed-zk</artifactId>
             <groupId>io.wangxin</groupId>
             <version>${project.version}</version>
         </dependency>
@@ -30,6 +30,12 @@
             <artifactId>elastic-job-common-core</artifactId>
             <version>${elastic-job.version}</version>
             <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-test</artifactId>
+            <version>${curator-test.version}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
     <build>
