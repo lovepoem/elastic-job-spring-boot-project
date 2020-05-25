@@ -1,17 +1,27 @@
-regCenter:
-  serverList: localhost:6181
-  namespace: elastic-job-lite-springboot
-
-simpleJob:
-  cron: 0/5 * * * * ?
-  shardingTotalCount: 3
-  shardingItemParameters: 0=Beijing,1=Shanghai,2=Guangzhou
-
-dataflowJob:
-  cron: 0/5 * * * * ?
-  shardingTotalCount: 3
-  shardingItemParameters: 0=Beijing,1=Shanghai,2=Guangzhou
-
 spring:
   profiles:
     active: dev
+
+
+elastic-job:
+  reg:
+    zookeeper:
+      server-lists: localhost:2181
+      namespace: elastic-job-lite-springboot
+
+  job:
+    simple:
+      - id: springBootSimpleJob
+        class: io.wangxin.elasticjob.example.jobs.job.dataflow.SpringBootSimpleJob
+        cron: 0/5 * * * * ?
+        sharding-total-count: 3
+        sharding-item-parameters: 0=Beijing,1=Shanghai,2=Guangzhou
+
+    dataflow:
+      - id: springBootDataflowJob
+        class: io.wangxin.elasticjob.example.jobs.job.dataflow.SpringBootDataflowJob
+        cron: 0/5 * * * * ?
+        sharding-total-count: 3
+        sharding-item-parameters: 0=Beijing,1=Shanghai,2=Guangzhou
+    script:
+

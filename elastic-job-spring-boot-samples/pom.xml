@@ -13,14 +13,16 @@
     <packaging>pom</packaging>
     <modules>
         <module>elastic-job-spring-boot-samples-jobs</module>
-        <module>elastic-job-spring-boot-samples-embed-zk</module>
     </modules>
+    <properties>
+        <h2.version>1.4.184</h2.version>
+        <mysql.version>5.1.30</mysql.version>
+    </properties>
     <dependencies>
         <dependency>
             <groupId>org.apache.curator</groupId>
             <artifactId>curator-test</artifactId>
             <version>${curator-test.version}</version>
-            <scope>test</scope>
         </dependency>
     </dependencies>
     <build>

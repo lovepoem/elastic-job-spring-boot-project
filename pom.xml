@@ -6,7 +6,6 @@
     <artifactId>elastic-job-spring-boot-project</artifactId>
     <name>elastic-job-spring-boot-project</name>
     <version>0.1.0-SNAPSHOT</version>
-
     <packaging>pom</packaging>
 
     <description>Elastic-job integration with Spring Boot Project</description>
@@ -21,7 +20,7 @@
         <elastic-job.version>2.1.5</elastic-job.version>
         <spring-boot.version>2.3.0.RELEASE</spring-boot.version>
         <junit-jupiter.version>5.6.0</junit-jupiter.version>
-        <curator-test.version>2.10.0</curator-test.version>
+        <curator-test.version>2.12.0</curator-test.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -46,12 +45,6 @@
         </dependencies>
     </dependencyManagement>
     <dependencies>
-        <dependency>
-            <groupId>org.apache.curator</groupId>
-            <artifactId>curator-test</artifactId>
-            <version>${curator-test.version}</version>
-            <scope>test</scope>
-        </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
