@@ -31,7 +31,7 @@ import java.util.List;
 /**
  * @author wx
  */
-@Component
+//@Component
 public class SpringBootDataflowJob implements DataflowJob<Foo> {
 
     @Resource
