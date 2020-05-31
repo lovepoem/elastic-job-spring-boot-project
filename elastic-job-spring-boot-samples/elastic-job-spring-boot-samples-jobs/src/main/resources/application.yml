@@ -12,11 +12,14 @@ elastic-job:
       id: regCenter
       server-lists: localhost:2181
       namespace: elastic-job-lite-springboot
+      base-sleep-time-milliseconds: 1000
+      max-sleep-time-milliseconds: 3000
+      max-retries: 3
 
   job:
     simple:
       - id: springBootSimpleJob
-        class: io.wangxin.elasticjob.example.jobs.job.simple.SpringBootSimpleJob
+        clazz: io.wangxin.elasticjob.example.jobs.job.simple.SpringBootSimpleJob
         registry-center-ref: regCenter
         cron: 0/5 * * * * ?
         sharding-total-count: 3
@@ -29,7 +32,7 @@ elastic-job:
         monitor-port: 9888
 
       - id: springBootSimpleJobTwo
-        class: io.wangxin.elasticjob.example.jobs.job.simple.SpringBootSimpleJobTwo
+        clazz: io.wangxin.elasticjob.example.jobs.job.simple.SpringBootSimpleJobTwo
         registry-center-ref: regCenter
         cron: 0/5 * * * * ?
         sharding-total-count: 3
@@ -43,7 +46,7 @@ elastic-job:
 
     dataflow:
       - id: springBootDataflowJob
-        class: io.wangxin.elasticjob.example.jobs.job.dataflow.SpringBootDataflowJob
+        clazz: io.wangxin.elasticjob.example.jobs.job.dataflow.SpringBootDataflowJob
         registry-center-ref: regCenter
         cron: 0/5 * * * * ?
         sharding-total-count: 3

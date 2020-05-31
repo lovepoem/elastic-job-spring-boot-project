@@ -30,7 +30,6 @@ import java.util.List;
 /**
  * @author wx
  */
-//@Component
 public class SpringBootSimpleJobTwo implements SimpleJob {
 
     @Resource

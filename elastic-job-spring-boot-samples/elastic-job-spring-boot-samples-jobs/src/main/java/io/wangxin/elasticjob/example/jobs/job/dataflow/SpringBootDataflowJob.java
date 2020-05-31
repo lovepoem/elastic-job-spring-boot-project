@@ -21,7 +21,6 @@ import com.dangdang.ddframe.job.api.ShardingContext;
 import com.dangdang.ddframe.job.api.dataflow.DataflowJob;
 import io.wangxin.elasticjob.example.jobs.fixture.entity.Foo;
 import io.wangxin.elasticjob.example.jobs.fixture.repository.FooRepository;
-import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 import java.text.SimpleDateFormat;
@@ -31,7 +30,6 @@ import java.util.List;
 /**
  * @author wx
  */
-//@Component
 public class SpringBootDataflowJob implements DataflowJob<Foo> {
 
     @Resource

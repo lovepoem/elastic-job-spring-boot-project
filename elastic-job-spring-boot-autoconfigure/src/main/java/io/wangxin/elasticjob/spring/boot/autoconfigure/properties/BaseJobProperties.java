@@ -4,6 +4,7 @@ package io.wangxin.elasticjob.spring.boot.autoconfigure.properties;
  * @author wx
  */
 public class BaseJobProperties {
+    private String id;
     private String clazz;
     private String jobRef;
     private String registryCenterRef;
@@ -168,5 +169,13 @@ public class BaseJobProperties {
 
     public void setEventTraceRdbDataSource(String eventTraceRdbDataSource) {
         this.eventTraceRdbDataSource = eventTraceRdbDataSource;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

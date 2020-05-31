@@ -8,7 +8,7 @@ import org.springframework.context.annotation.ImportResource;
  * @Author Wang Xin
  */
 @SpringBootApplication(scanBasePackages = "io.wangxin.elasticjob.example.jobs")
-@ImportResource("classpath:META-INF/applicationContext.xml")
+//@ImportResource("classpath:META-INF/applicationContext.xml")
 public class ExampleJobsApplication {
     public static void main(String[] args) {
         SpringApplication.run(ExampleJobsApplication.class, args);
