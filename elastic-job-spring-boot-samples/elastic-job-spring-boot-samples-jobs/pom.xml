@@ -11,11 +11,11 @@
 
     <artifactId>elastic-job-spring-boot-samples-jobs</artifactId>
     <dependencies>
-        <dependency>
+<!--        <dependency>
             <artifactId>elastic-job-spring-boot-samples-embed-zk</artifactId>
             <groupId>io.wangxin</groupId>
             <version>${project.version}</version>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>io.wangxin</groupId>
             <artifactId>elastic-job-spring-boot-starter</artifactId>

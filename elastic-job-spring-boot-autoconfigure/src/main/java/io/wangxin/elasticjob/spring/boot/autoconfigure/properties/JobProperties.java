@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 import static io.wangxin.elasticjob.spring.boot.autoconfigure.StarterConstants.JOB_PREFIX;
+import static io.wangxin.elasticjob.spring.boot.autoconfigure.StarterConstants.SIMPLE_JOB_PREFIX;
 
 /**
  * @author wx

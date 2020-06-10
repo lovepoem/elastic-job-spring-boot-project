@@ -16,7 +16,7 @@ public class StarterConstants {
     public static final String REGISTRY_PREFIX = ELASTIC_JOB_PREFIX + ".reg";
     public static final String REGISTRY_ZOOKEEPER_PREFIX = REGISTRY_PREFIX + ".zookeeper";
 
-    public static final String JOB_PREFIX = REGISTRY_PREFIX + ".job";
+    public static final String JOB_PREFIX = ELASTIC_JOB_PREFIX + ".job";
     public static final String JOB_LISTENER_PREFIX = JOB_PREFIX + ".listener";
     public static final String JOB_DISTRIBUTED_LISTENER_PREFIX = JOB_PREFIX + ".distributed-listener";
 
@@ -24,7 +24,7 @@ public class StarterConstants {
     public static final String DATAFLOW_JOB_PREFIX = JOB_PREFIX + ".dataflow";
     public static final String SCRIPT_JOB_PREFIX = JOB_PREFIX + ".script";
     private static final int MAP_CAPACITY = 64;
-    
+
     public static final Map<String, Class> PROPERTY_MAP = new HashMap<String, Class>(MAP_CAPACITY) {
         {
             put(ELASTIC_JOB_PREFIX, ElasticJobProperties.class);

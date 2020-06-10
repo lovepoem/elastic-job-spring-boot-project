@@ -12,6 +12,7 @@ import com.dangdang.ddframe.job.reg.zookeeper.ZookeeperRegistryCenter;
 import io.wangxin.elasticjob.spring.boot.autoconfigure.properties.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -33,7 +34,7 @@ import static io.wangxin.elasticjob.spring.boot.autoconfigure.StarterConstants.E
 @ConditionalOnProperty(prefix = ELASTIC_JOB_PREFIX, name = "enabled", matchIfMissing = true)
 @ConditionalOnClass(name = "org.springframework.boot.context.properties.bind.Binder")
 @EnableConfigurationProperties({ElasticJobProperties.class, RegistryZooKeeperProperties.class, JobProperties.class})
-public class ElasticJobAutoConfiguration {
+public class ElasticJobAutoConfiguration implements InitializingBean {
     private static final Logger LOGGER = LoggerFactory.getLogger(ElasticJobAutoConfiguration.class);
     @Resource
     private RegistryZooKeeperProperties registryZooKeeperProperties;
@@ -50,16 +51,24 @@ public class ElasticJobAutoConfiguration {
         return result;
     }
 
-    @Bean
     public void setUpSimpleJob() {
         if (jobProperties != null) {
-            jobProperties.getSimple().forEach(simpleJob -> {
-                JobCoreConfiguration coreConfig = JobCoreConfiguration.newBuilder(simpleJob.getId(), simpleJob.getClazz(), simpleJob.getShardingTotalCount()).shardingItemParameters(simpleJob.getShardingItemParameters()).build();
-                SimpleJobConfiguration simpleJobConfig = new SimpleJobConfiguration(coreConfig, simpleJob.getClazz());
-                new JobScheduler(setUpRegistryCenter(), LiteJobConfiguration.newBuilder(simpleJobConfig).build(), null).init();
-            });
+            List<SimpleJobProperties> simple = jobProperties.getSimple();
+            if (simple != null) {
+                simple.forEach(simpleJob -> {
+                    JobCoreConfiguration coreConfig = JobCoreConfiguration.newBuilder(simpleJob.getId(), simpleJob.getClazz(), simpleJob.getShardingTotalCount()).shardingItemParameters(simpleJob.getShardingItemParameters()).build();
+                    SimpleJobConfiguration simpleJobConfig = new SimpleJobConfiguration(coreConfig, simpleJob.getClazz());
+                    new JobScheduler(setUpRegistryCenter(), LiteJobConfiguration.newBuilder(simpleJobConfig).build(), null).init();
+                });
+            }
         }
     }
+
+    @Override
+    public void afterPropertiesSet() {
+        setUpSimpleJob();
+    }
+
 
 
 
