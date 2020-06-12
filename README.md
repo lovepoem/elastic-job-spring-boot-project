@@ -1,1 +1,76 @@
 # elastic-job-spring-boot-starter
+
+A spring-boot-starter of elastic-job  
+
+The configuration sample is :
+
+```yaml
+spring:
+  datasource:
+    url: jdbc:h2:mem:job_event_storage
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+elastic-job:
+  reg:
+    type: zookeeper
+    zookeeper:
+      id: regCenter
+      server-lists: localhost:2181
+      namespace: elastic-job-lite-springboot
+      base-sleep-time-milliseconds: 1000
+      max-sleep-time-milliseconds: 3000
+      max-retries: 3
+
+  job:
+    simple:
+      - id: springBootSimpleJob
+        clazz: io.wangxin.elasticjob.example.jobs.job.simple.SpringBootSimpleJob
+        registry-center-ref: regCenter
+        cron: 0/5 * * * * ?
+        sharding-total-count: 3
+        sharding-item-parameters: 0=Beijing,1=Shanghai,2=Guangzhou
+        monitor—execution: false
+        failover: true
+        description: 只运行一次的作业示例
+        disabled: false
+        overwrite: true
+        monitor-port: 9888
+
+      - id: springBootSimpleJobTwo
+        clazz: io.wangxin.elasticjob.example.jobs.job.simple.SpringBootSimpleJobTwo
+        registry-center-ref: regCenter
+        cron: 0/5 * * * * ?
+        sharding-total-count: 3
+        sharding-item-parameters: 0=Beijing,1=Shanghai,2=Guangzhou
+        monitor—execution: false
+        failover: true
+        description: 只运行一次的作业示例2
+        disabled: false
+        overwrite: true
+        monitor-port: 9888
+
+    dataflow:
+      - id: springBootDataflowJob
+        clazz: io.wangxin.elasticjob.example.jobs.job.dataflow.SpringBootDataflowJob
+        registry-center-ref: regCenter
+        cron: 0/5 * * * * ?
+        sharding-total-count: 3
+        sharding-item-parameters: 0=Beijing,1=Shanghai,2=Guangzhou
+        max-time-diff-seconds: -1
+        monitor-execution: true
+        failover: true
+        streaming-process: true
+        description: 按顺序不停止运行的作业示例
+        disabled: false
+        overwrite: true
+
+    script:
+      - id: springScriptJob
+        registry-center-ref: regCenter
+        cron: 0/5 * * * * ?
+        description: shell脚本执行测试
+        script-command-line: your_path/elastic-job-spring-boot-project/elastic-job-spring-boot-samples/elastic-job-spring-boot-samples-jobs/src/main/resources/script/demo.sh
+
+```
