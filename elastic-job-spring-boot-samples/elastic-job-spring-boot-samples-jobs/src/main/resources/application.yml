@@ -65,3 +65,7 @@ elastic-job:
         cron: 0/5 * * * * ?
         description: shell脚本执行测试
         script-command-line: your_path/elastic-job-spring-boot-project/elastic-job-spring-boot-samples/elastic-job-spring-boot-samples-jobs/src/main/resources/script/demo.sh
+          - registry-0
+server:
+  #端口号
+  port: 8087
