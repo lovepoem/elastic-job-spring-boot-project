@@ -2,7 +2,20 @@
 
 A spring-boot-starter of elastic-job  
 
-The configuration sample is :
+### Maven dependency
+
+```xml
+    <elastic-job-spring-boot-starter.version>1.4</elastic-job-spring-boot-starter.version>
+
+    <dependency>
+        <groupId>io.wangxin</groupId>
+        <artifactId>elastic-job-spring-boot-starter</artifactId>
+        <version>${elastic-job-spring-boot-starter.version}</version>
+    </dependency>
+
+```
+
+### Configuration sample  :
 
 ```yaml
 spring:
@@ -74,3 +87,9 @@ elastic-job:
         script-command-line: your_path/elastic-job-spring-boot-project/elastic-job-spring-boot-samples/elastic-job-spring-boot-samples-jobs/src/main/resources/script/demo.sh
 
 ```
+
+### Code samples
+
+Please refer to https://github.com/lovepoem/elastic-job-spring-boot-project/tree/master/elastic-job-spring-boot-samples
+
+You should start a zookeeper on your pc
